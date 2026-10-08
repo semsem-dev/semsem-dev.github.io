@@ -72,6 +72,20 @@ export const skillsData = [
     ],
   },
   {
+    category: "AI & Agentic Engineering",
+    items: [
+      "Claude Code",
+      "GitHub Copilot",
+      "Model Context Protocol (MCP)",
+      "Multi-agent Orchestration",
+      "Context Engineering",
+      "RAG",
+      "LangChain",
+      "Vector Databases",
+      "n8n",
+    ],
+  },
+  {
     category: "Data, Analytics & AI",
     items: [
       "OpenAI API",

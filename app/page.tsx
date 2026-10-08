@@ -1,6 +1,7 @@
 import { profileData } from "@/app/data/profile";
 import type { ProfileType } from "@/types";
 import Job from "./components/pages/Job";
+import AgenticEngineering from "./components/pages/AgenticEngineering";
 import Social from "./components/shared/Social";
 import { Slide } from "./animation/Slide";
 import ContributionGraph from "./components/pages/GithubCalendarComponent";
@@ -106,6 +107,9 @@ export default async function Home() {
 
         {/* Work Experience */}
         <Job />
+
+        {/* AI & Agentic Engineering */}
+        <AgenticEngineering />
 
         {/* GitHub Contributions */}
         <ContributionGraph />
