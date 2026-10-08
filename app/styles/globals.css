@@ -1,128 +1,173 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './prism.css' layer(base);
+@import 'tailwindcss';
 
-html {
-  scroll-behavior: smooth;
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-incognito: var(--incognito);
+  --font-inter: var(--inter);
+
+  --color-primary-color: #33e092;
+  --color-secondary-color: #0cce6b;
+  --color-tertiary-color: #16a34a;
+  --color-primary-bg: rgba(39, 39, 43, 0.4);
+  --color-secondary-bg: rgba(250, 250, 250, 0.4);
+
+  --shadow-line-light: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  --shadow-line-dark: rgb(29, 29, 32) 0px 1px 0px;
+
+  --grid-template-columns-custom: 1.2fr 1fr;
+
+  --grid-template-rows-fit: min-content 0fr;
+  --grid-template-rows-full: min-content 1fr;
+
+  --background-image-noise: url('/noise.png');
+
+  --background-position-zero: 0 0;
 }
 
-@import "prism.css";
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-body {
-  background-color: #ffffff;
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.dark body {
-  background-color: #18181b;
-  /* zinc-900 */
-  background-image: radial-gradient(#27272a 1px, transparent 1px);
-}
-
-.code-block {
-  @apply relative overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50;
-}
-
-.code-header {
-  @apply flex items-center gap-2 px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-800/50 text-xs font-mono text-zinc-500;
-}
-
-.line-numbers {
-  @apply select-none text-right font-mono text-zinc-300 dark:text-zinc-700 mr-4;
-}
-
-.code-content {
-  @apply font-mono text-sm leading-6;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--incognito), "Inter", sans-serif;
-}
-
-.path {
-  stroke-dasharray: 500px 100px;
-  animation: animate 100s linear infinite alternate-reverse;
-}
-
-@keyframes animate {
-  from {
-    stroke-dashoffset: 0;
-  }
-
-  to {
-    stroke-dashoffset: 12433.8193359375;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-/* Glassmorphism utilities */
-@layer utilities {
-  .glass {
-    @apply backdrop-blur-md bg-white/10 dark:bg-zinc-900/30;
-  }
+@utility glass {
+  @apply backdrop-blur-md bg-white/10 dark:bg-zinc-900/30;
+}
 
-  .glass-border {
-    @apply border border-white/20 dark:border-zinc-700/50;
-  }
+@utility glass-border {
+  @apply border border-white/20 dark:border-zinc-700/50;
+}
 
+@utility gradient-text {
   /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent;
-  }
+  @apply bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent;
+}
 
+@utility glow-blue {
   /* Glow effects */
-  .glow-blue {
-    box-shadow: 0 0 20px -5px rgba(59, 130, 246, 0.4);
-  }
+  box-shadow: 0 0 20px -5px rgba(59, 130, 246, 0.4);
+}
 
-  .glow-purple {
-    box-shadow: 0 0 20px -5px rgba(147, 51, 234, 0.4);
-  }
+@utility glow-purple {
+  box-shadow: 0 0 20px -5px rgba(147, 51, 234, 0.4);
+}
 
+@utility hover-glow {
   /* Hover glow */
-  .hover-glow:hover {
+  &:hover {
     box-shadow: 0 4px 20px -4px rgba(59, 130, 246, 0.3);
   }
+}
 
+@utility transition-smooth {
   /* Smooth transitions */
-  .transition-smooth {
-    @apply transition-all duration-300 ease-in-out;
-  }
+  @apply transition-all duration-300 ease-in-out;
+}
 
+@utility hover-lift {
   /* Card hover lift effect */
-  .hover-lift {
-    @apply transition-transform duration-300;
-  }
+  @apply transition-transform duration-300;
 
-  .hover-lift:hover {
+  &:hover {
     @apply -translate-y-1;
   }
+}
 
+@utility gradient-border {
   /* Gradient border */
-  .gradient-border {
-    position: relative;
-  }
+  position: relative;
 
-  .gradient-border::before {
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  .gradient-border:hover::before {
+  &:hover::before {
     opacity: 1;
   }
+}
+
+@layer utilities {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #ffffff;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark body {
+    background-color: #18181b;
+    /* zinc-900 */
+    background-image: radial-gradient(#27272a 1px, transparent 1px);
+  }
+
+  .code-block {
+    @apply relative overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50;
+  }
+
+  .code-header {
+    @apply flex items-center gap-2 px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-800/50 text-xs font-mono text-zinc-500;
+  }
+
+  .line-numbers {
+    @apply select-none text-right font-mono text-zinc-300 dark:text-zinc-700 mr-4;
+  }
+
+  .code-content {
+    @apply font-mono text-sm leading-6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--incognito), 'Inter', sans-serif;
+  }
+
+  .path {
+    stroke-dasharray: 500px 100px;
+    animation: animate 100s linear infinite alternate-reverse;
+  }
+
+  @keyframes animate {
+    from {
+      stroke-dashoffset: 0;
+    }
+
+    to {
+      stroke-dashoffset: 12433.8193359375;
+    }
+  }
+
+  /* Glassmorphism utilities */
 }
 
 /* Line clamp utility */

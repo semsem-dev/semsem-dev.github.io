@@ -50,7 +50,7 @@ export default function Testimonials() {
                                 href={LINKEDIN_RECOMMENDATIONS_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="relative p-6 rounded-2xl dark:bg-zinc-800/50 bg-zinc-50 border dark:border-zinc-700/50 border-zinc-200 backdrop-blur-sm transition-all duration-300 group cursor-pointer block"
+                                className="relative p-6 rounded-2xl dark:bg-zinc-800/50 bg-zinc-50 border dark:border-zinc-700/50 border-zinc-200 backdrop-blur-xs transition-all duration-300 group cursor-pointer block"
                             >
                             <BiSolidQuoteAltLeft className="absolute top-4 right-4 text-3xl dark:text-zinc-700 text-zinc-300 group-hover:text-blue-500/50 transition-colors duration-300" />
 

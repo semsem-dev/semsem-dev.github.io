@@ -47,7 +47,7 @@ export default async function Job() {
                   <div className="flex flex-col font-mono text-xs sm:text-sm">
                     {/* Line 1 */}
                     <div className="flex gap-4">
-                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none flex-shrink-0">1</span>
+                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none shrink-0">1</span>
                       <div className="flex flex-wrap gap-x-2">
                         <span className="text-purple-500 font-semibold">const</span>
                         <span className="text-blue-500 font-semibold">experience</span>
@@ -58,7 +58,7 @@ export default async function Job() {
 
                     {/* Line 2 */}
                     <div className="flex gap-4">
-                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none flex-shrink-0">2</span>
+                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none shrink-0">2</span>
                       <div className="pl-4 flex flex-wrap gap-x-2">
                         <span className="text-red-400">company:</span>
                         <span className="text-green-500">"{job.name}"</span>,
@@ -67,12 +67,12 @@ export default async function Job() {
 
                     {/* Line 3 */}
                     <div className="flex gap-4">
-                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none flex-shrink-0">3</span>
+                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none shrink-0">3</span>
                       <div className="pl-4 flex flex-wrap gap-x-2 items-center">
                         <span className="text-red-400">role:</span>
                         <div className="flex items-center gap-2">
                           {job.logo && (
-                            <div className="relative w-4 h-4 rounded-sm overflow-hidden flex-shrink-0">
+                            <div className="relative w-4 h-4 rounded-xs overflow-hidden shrink-0">
                               <Image src={job.logo} fill alt={job.name} className="object-cover" />
                             </div>
                           )}
@@ -83,7 +83,7 @@ export default async function Job() {
 
                     {/* Line 4 */}
                     <div className="flex gap-4">
-                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none flex-shrink-0">4</span>
+                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none shrink-0">4</span>
                       <div className="pl-4 flex flex-wrap gap-x-2">
                         <span className="text-red-400">period:</span>
                         <span className="text-yellow-500">
@@ -94,10 +94,10 @@ export default async function Job() {
 
                     {/* Line 5 - Description (Wraps) */}
                     <div className="flex gap-4">
-                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none flex-shrink-0">5</span>
+                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none shrink-0">5</span>
                       <div className="pl-4 flex flex-wrap gap-x-2">
                         <span className="text-red-400">description:</span>
-                        <span className="text-zinc-500 dark:text-zinc-400 italic break-words whitespace-pre-wrap">
+                        <span className="text-zinc-500 dark:text-zinc-400 italic wrap-break-word whitespace-pre-wrap">
                             // {job.description}
                         </span>
                       </div>
@@ -105,7 +105,7 @@ export default async function Job() {
 
                     {/* Line 6 */}
                     <div className="flex gap-4">
-                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none flex-shrink-0">6</span>
+                      <span className="w-6 text-right text-zinc-300 dark:text-zinc-700 select-none shrink-0">6</span>
                       <div className="text-zinc-600 dark:text-zinc-300">{"}"}</div>
                     </div>
                   </div>
@@ -113,7 +113,7 @@ export default async function Job() {
                   {/* Link Overlay */}
                   <RefLink
                     href={job.url}
-                    className="absolute inset-0 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-lg"
+                    className="absolute inset-0 z-10 focus:outline-hidden focus:ring-2 focus:ring-blue-500/50 rounded-lg"
                   >
                     <span className="sr-only">View {job.name}</span>
                   </RefLink>

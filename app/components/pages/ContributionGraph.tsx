@@ -1,8 +1,9 @@
 "use client";
 import { useTheme } from "next-themes";
-import GitHubCalendar from "react-github-calendar";
+import { GitHubCalendar } from "react-github-calendar";
 import { github } from "@/app/data/contribution-graph-theme";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useHasMounted } from "@/app/utils/use-has-mounted";
 import YearButton from "../shared/YearButton";
 import { getGitHubYears } from "@/app/utils/calculate-years";
 import EmptyState from "../shared/EmptyState";
@@ -13,17 +14,13 @@ export default function ContributionGraph() {
     undefined
   );
   const { theme, systemTheme } = useTheme();
-  const [serverTheme, setServerTheme] = useState<"light" | "dark" | undefined>(
-    undefined
-  );
   const scheme =
     theme === "light" ? "light" : theme === "dark" ? "dark" : systemTheme;
 
-  // Set theme only after rendering to avoid mismatch between client and server
+  // Apply the theme only after hydration to avoid a client/server mismatch
   // https://github.com/vercel/next.js/issues/10608#issuecomment-589073831
-  useEffect(() => {
-    setServerTheme(scheme);
-  }, [scheme]);
+  const hasMounted = useHasMounted();
+  const serverTheme = hasMounted ? scheme : undefined;
 
   const today = new Date().getFullYear();
   const username = "semsem-dev";
