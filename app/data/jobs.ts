@@ -2,16 +2,6 @@ import { JobType } from "@/types";
 
 export const jobsData: JobType[] = [
     {
-        _id: "noaat",
-        name: "Noaat",
-        jobTitle: "Founder & CTO",
-        logo: "/images/companies/noaat.png",
-        url: "https://noaat.com", // Assumed or can be left empty
-        startDate: "2024-01-01",
-        endDate: "",
-        description: "Founded and scaled B2B SaaS platform from 0→1, serving 10+ restaurant clients with 99.9% uptime. Architected complete technology stack (Kotlin/Spring Boot, React Native, Next.js, AWS) and led a team of 8 engineers.",
-    },
-    {
         _id: "zalando",
         name: "Zalando",
         jobTitle: "Senior Software Engineer",
@@ -19,7 +9,17 @@ export const jobsData: JobType[] = [
         url: "https://zalando.com",
         startDate: "2022-09-01",
         endDate: "",
-        description: "Engineered chargeback systems generating €29M annual value. Led cloud transformation migrating legacy systems to microservices, improving availability by 80%. Architected Partner Self-Service platform.",
+        description: "Designed and led delivery of a supplier-chargeback platform generating €33M+ a year across 1,200+ suppliers. Co-designed a supplier self-service tool that saved ~3.5 FTEs and cut delivery delays by 1.5 days. Won Best AI Usage at Procure-to-Pay HackWeek 2026; internal speaker and Gen AI Labs trainer.",
+    },
+    {
+        _id: "noaat",
+        name: "Noaat",
+        jobTitle: "Founder & CEO",
+        logo: "/images/companies/noaat.png",
+        url: "https://noaat.com", // Assumed or can be left empty
+        startDate: "2024-01-01",
+        endDate: "2026-01-01",
+        description: "Founded and scaled a B2B SaaS platform from 0→1, serving 50+ restaurant clients at 99.9% uptime, evolving it from a feedback and loyalty app into a cashback marketplace and a point-of-sale system. Led a cross-functional team of 8 engineers and architected the full stack (Kotlin/Spring Boot, React Native, Next.js, AWS).",
     },
     {
         _id: "cynopsis",
@@ -29,7 +29,7 @@ export const jobsData: JobType[] = [
         url: "https://cynopsis.co",
         startDate: "2021-10-01",
         endDate: "2026-03-01",
-        description: "Architected enterprise AML/KYC transaction monitoring platform processing 100K+ daily transactions. Led AI integration strategy building RAG-powered compliance assistant.",
+        description: "Scaled AML/KYC transaction processing to 1M+ daily transactions with a 300% throughput improvement. Led AI integration, building a RAG-powered compliance assistant that cut analyst investigation time by 60%.",
     },
     {
         _id: "dhl",
@@ -39,7 +39,7 @@ export const jobsData: JobType[] = [
         url: "https://dhl.com",
         startDate: "2021-10-01",
         endDate: "2022-05-01",
-        description: "Worked on Transport Management System (TMS) automating logistics workflows. Reduced manual entry and minimized human error in scheduling shipments.",
+        description: "Developed features for DHL Freight's Transport Management System (TMS) and automated logistics workflows, reducing manual data entry and human error in shipment scheduling.",
     },
     {
         _id: "rubikal",
@@ -49,17 +49,17 @@ export const jobsData: JobType[] = [
         url: "https://rubikal.com",
         startDate: "2021-01-01",
         endDate: "2022-06-01",
-        description: "Deployed Serverless functions using AWS Lambda. Redesigned data pipelines reducing ETL processing time by 45%. Created visualizations using Tableau and Metabase.",
+        description: "Redesigned the data pipeline, cutting average ETL time by 45% and enabling real-time analytics. Analyzed education data covering millions of students and built Tableau and Metabase dashboards.",
     },
     {
-        _id: "cassbana",
+        _id: "dhl-cloud-native",
         name: "DHL Freight Enterprise (Cloud Native)",
         jobTitle: "Cloud Native Engineer",
-        logo: "/images/companies/cassbana.png", // Using cassbana logo as placeholder for this separate DHL role if distinct logo not available, or reuse dhl.
+        logo: "/images/companies/dhl.jpg",
         url: "https://dhl.com",
         startDate: "2020-10-01",
         endDate: "2021-02-01",
-        description: "Led migration of monolithic applications to Serverless architecture (Azure Functions), cutting operational costs by 35%. Automated deployment pipelines using Gitlab CI/CD.",
+        description: "Led the migration of monolithic applications to a serverless architecture (Azure Functions), cutting operational costs by 35% and latency by 40%. Automated GitLab CI/CD, cutting deployment time by 60%.",
     },
     {
         _id: "sia",
@@ -69,7 +69,7 @@ export const jobsData: JobType[] = [
         url: "https://www.facebook.com/sia.world.edu/",
         startDate: "2020-04-01",
         endDate: "2020-12-01",
-        description: "Created 7+ microservices for gamification and education. Created CI/CD pipelines decreasing deployment time by 60%. Optimized database queries improving data retrieval by 30%.",
+        description: "Built 7+ microservices (gamification, notifications, educational content) for a 10-person ed-tech startup. Created a CI/CD pipeline that cut deployment time by 60% and optimized queries for 30% faster data retrieval.",
     },
     {
         _id: "robotech",
@@ -79,6 +79,6 @@ export const jobsData: JobType[] = [
         url: "https://www.facebook.com/robotech.team/",
         startDate: "2018-08-01",
         endDate: "2020-04-01",
-        description: "Developed communication system for ROVs, reducing packet loss to <0.01%. Designed and launched 2 ROV prototypes. Optimized navigation using OpenCV.",
+        description: "Built the communication system for remotely operated vehicles (ROVs), reducing packet loss below 0.01%. Designed 2 ROV prototypes approved for mass production and improved object-detection accuracy by 30% with OpenCV.",
     },
 ];

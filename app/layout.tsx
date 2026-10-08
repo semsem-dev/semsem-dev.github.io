@@ -17,7 +17,7 @@ const inter = Inter({
 const options = {
   title: "Hassan Elseoudy",
   description:
-    "Hassan Elseoudy is a Software Developer and Technical Writer who is passionate about building solutions and contributing to open source communities",
+    "Hassan Elseoudy is a Senior Software Engineer at Zalando in Berlin who designs distributed backend systems in Java, Kotlin, and Python, and the founder of Noaat.",
   url: "https://semsem.dev",
   ogImage: "/hassan.jpg",
 };
