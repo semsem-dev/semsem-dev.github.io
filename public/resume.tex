@@ -50,7 +50,7 @@
 \addtolength{\textheight}{1.4in}
 
 \urlstyle{same}
-\linespread{1.08} % slightly more breathing room between lines
+\linespread{1.15} % slightly more breathing room between lines
 
 \raggedbottom
 \raggedright
@@ -78,8 +78,18 @@
   }
 }
 
+% One-line job heading: "Role @ Company" on the left, "Location -- Dates" on the right
+% Args: {role}{dates}{company}{location}
 \newcommand{\resumeSubheading}[4]{
-  \needspace{6\baselineskip}\vspace{-2pt}\item
+  \needspace{6\baselineskip}\vspace{3pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1 @} #3 & \small #4 --- #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+% Two-line heading kept for Education
+\newcommand{\resumeEducation}[4]{
+  \needspace{4\baselineskip}\vspace{-2pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \textbf{\small #2} \\
       \textit{\small#3} & \textit{\small #4} \\
@@ -133,7 +143,7 @@
 %-----------SUMMARY-----------
 \section{Summary}
 \small{
-Senior software engineer with 8+ years designing distributed backend systems in Java, Kotlin, and Python. At Zalando, designs and leads cross-team platforms for supplier finance and logistics, and drives platform modernization and AI-assisted engineering. Internal speaker, Gen AI Labs trainer, and startup founder.
+Senior software engineer with 8+ years designing distributed backend systems in Java, Kotlin, and Python. At Zalando, designs and leads cross-team platforms for supplier finance and logistics, and drives platform modernization and AI-assisted engineering. Internal speaker, Agentic AI Labs trainer, and startup founder.
 }
 \vspace{-4pt}
 
@@ -144,23 +154,23 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Senior Software Engineer}{Sep 2022 -- Present}
-  {Zalando --- Procure-to-Pay Engineering}{Berlin, Germany}
+  {\textbf{Zalando} (Procure-to-Pay Engineering)}{Berlin, Germany}
 \resumeItemListStart
 \resumeItem{\textbf{Designed the architecture and led delivery} of a \textbf{supplier-chargeback platform} that automatically bills suppliers for contract violations; its reusable design scaled to \textbf{seven chargeback types} generating \textbf{\texteuro{}33M+ a year} (\texteuro{}67M+ since 2025) across \textbf{1,200+ suppliers} and saved \textasciitilde{}\textbf{1.5 FTEs} of manual work.}
-\resumeItem{Co-authored the technical designs for a \textbf{supplier self-service tool} spanning \textbf{six services} and for clarification workflows covering \textasciitilde{}\textbf{500 suppliers}; the self-service launch saved or avoided \textasciitilde{}\textbf{3.5 FTEs} and cut delivery delays by \textbf{1.5 days}.}
-\resumeItem{Developed and operated the delivery-notice system suppliers use to announce shipments (\textbf{1.5M+ notices}, a \textbf{250M+ row} database, \textbf{99.99\% availability}, \textbf{540K+} submitted by \textbf{2,300+ suppliers} since 2022) and its integration with \textbf{transport planning} for delivery scheduling and warehouse capacity.}
+\resumeItem{Authored the technical designs for a \textbf{supplier self-service tool} spanning \textbf{six services} and for clarification workflows covering \textasciitilde{}\textbf{500 suppliers}; the self-service launch saved or avoided \textasciitilde{}\textbf{3.5 FTEs} and cut delivery delays by \textbf{1.5 days}.}
+\resumeItem{Developed and operated the delivery-notice system suppliers use to announce shipments (\textbf{1.5M+ notices}, \textbf{250M+ row} database, \textbf{99.99\% availability}) and its \textbf{transport-planning} integration for scheduling and warehouse capacity.}
 \resumeItem{Automated \textbf{customs import filings} and built the tariff and duty-rate services used to price imported goods.}
-\resumeItem{Delivered core parts of the \textbf{About You integration}: made purchasing rules configurable instead of hard-coded, and co-built the system for internal sales and stock-ownership transfers between the two companies.}
-\resumeItem{Delivered \textbf{Spring~Boot~3} migrations across inbound and procurement services and moved \textbf{12 services to Spring~Boot~4}; extended \textbf{shared messaging libraries used by other teams} with tracing and event deduplication.}
-\resumeItem{Co-built \textbf{Shipping Notice Co-pilot}, an AI prototype that pre-fills supplier delivery notices from order history; the team won \textbf{``Best AI Usage''} at Procure-to-Pay HackWeek 2026.}
-\resumeItem{Spoke on \textbf{``The AI-Native Engineer''} at an internal engineering meetup; selected as a \textbf{Gen AI Labs trainer} for AI agents and MCP; co-designing a hands-on workshop for \textbf{\textasciitilde{}20 engineers across three teams}.}
-\resumeItem{Represented the shipment domain in \textbf{cross-team architecture} discussions; onboarded \textbf{three engineers}, interviewed candidates, reviewed \textbf{400+ code changes} from teammates, and led incident root-cause analyses.}
+\resumeItem{Delivered core parts of the \textbf{About You integration}: made purchasing rules configurable instead of hard-coded, and built the system for internal sales and stock-ownership transfers between the two companies.}
+\resumeItem{Migrated services to \textbf{Spring~Boot~3} and \textbf{12 services to Spring~Boot~4}; extended \textbf{shared messaging libraries used by other teams} with tracing and event deduplication.}
+\resumeItem{Built \textbf{Shipping Notice Copilot}, an AI prototype that pre-fills supplier delivery notices from order history; the team won \textbf{``Best AI Usage''} at Procure-to-Pay HackWeek 2026.}
+\resumeItem{Selected as an \textbf{Agentic AI Labs trainer} for AI agents and MCP, and designing a hands-on workshop for \textbf{\textasciitilde{}20 engineers across three teams}.}
+\resumeItem{Represented the shipment domain in \textbf{cross-team architecture} discussions; onboarded \textbf{three engineers}, interviewed candidates, and led incident root-cause analyses.}
 \resumeTech{Java, Kotlin, Spring Boot, PostgreSQL, Kafka (Nakadi), Kubernetes, AWS, OPA/Rego, OpenTelemetry}
 \resumeItemListEnd
 
 \resumeSubheading
   {Java Engineer}{Oct 2021 -- May 2022}
-  {DHL Freight Enterprise}{Sofia, Bulgaria (Remote)}
+  {\textbf{DHL\hspace{0.12em} Freight Enterprise}}{Sofia, Bulgaria}
 \resumeItemListStart
 \resumeItem{Developed features for DHL Freight's \textbf{Transport Management System (TMS)}, which runs customers' end-to-end transport operations across DHL's regional and national network.}
 \resumeItem{\textbf{Automated logistics workflows}, reducing manual data entry and human error in shipment scheduling.}
@@ -170,7 +180,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Software Engineer}{Jan 2021 -- Jun 2022}
-  {Rubikal}{Alexandria, Egypt}
+  {\textbf{Rubikal}}{Alexandria, Egypt}
 \resumeItemListStart
 \resumeItem{\textbf{Redesigned the data pipeline}, cutting average ETL time by \textbf{45\%} and enabling real-time analytics.}
 \resumeItem{Analyzed education data covering \textbf{millions of students} and delivered actionable insights to clients.}
@@ -182,7 +192,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Software Engineer}{Apr 2020 -- Dec 2020}
-  {Sia}{Cairo, Egypt}
+  {\textbf{Sia}}{Cairo, Egypt}
 \resumeItemListStart
 \resumeItem{Built \textbf{7+ microservices} (gamification, notifications, educational content) for a 10-person ed-tech startup.}
 \resumeItem{Created an \textbf{end-to-end CI/CD pipeline} that cut deployment time by \textbf{60\%}, enabling much faster feature releases.}
@@ -199,24 +209,24 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Founder \& CEO}{Jan 2024 -- Jan 2026}
-  {Noaat --- Restaurant \& retail tech startup}{Alexandria, Egypt}
+  {\textbf{Noaat} (Restaurant \& retail tech startup)}{Alexandria, Egypt}
 \resumeItemListStart
 \resumeItem{\textbf{Founded and scaled a B2B SaaS platform from 0$\rightarrow$1}, serving \textbf{50+ restaurant clients} at \textbf{99.9\% uptime}, and evolved it from a customer feedback and loyalty app into a cashback marketplace and a point-of-sale (POS) system.}
 \resumeItem{\textbf{Built and led a cross-functional team of 8 engineers} (frontend, mobile, backend, QA) plus data and design; set the technical roadmap, agile delivery (\textbf{40 two-week sprints}), code-review standards, and on-call playbooks, and was the main code reviewer (\textbf{330+ reviews}).}
-\resumeItem{\textbf{Architected the full technology stack}: Kotlin/Spring Boot backend (\textbf{\textasciitilde{}240 API endpoints}, \textbf{1,400+ tests}), React Native mobile app, Next.js website, and QR table ordering on AWS (ECS, Lambda, RDS, S3, CloudFormation).}
+\resumeItem{\textbf{Architected the full technology stack}: Kotlin/Spring Boot backend (\textbf{\textasciitilde{}240 API endpoints}), React Native mobile app, Next.js website, and QR table ordering on AWS (ECS, Lambda, RDS, S3, CloudFormation).}
 \resumeItem{Designed a \textbf{multi-tenant architecture} supporting \textbf{50+ branches} with role-based access control, staff permissions, and centralized client management.}
-\resumeItem{Built an \textbf{enterprise point-of-sale system} with real-time order management, multi-payment support, kitchen display integration, and thermal printing through a custom Android printer bridge; personally built the POS web app (\textbf{1,500+ automated tests}, 40 releases).}
+\resumeItem{Built an \textbf{enterprise point-of-sale system} with real-time order management, kitchen display integration, and thermal printing through a custom Android printer bridge; personally built the POS web app (40 releases).}
 \resumeItem{Implemented a \textbf{coupon and cashback loyalty system} with receipt-based claims and automatic receipt verification (AWS Textract, OpenAI), driving a \textbf{30\% increase} in repeat customer visits.}
 \resumeItem{Built a \textbf{customer feedback platform} with survey creation and response analytics for data-driven improvements.}
 \resumeItem{Built an \textbf{Arabic AI sales and support chatbot} on Facebook Messenger (n8n, GPT-4o-mini, Pinecone) that answers customers, opens Jira tickets for issues, and routes sales leads to the CRM and Slack.}
-\resumeItem{Led a cloud security and reliability overhaul: moved the AWS setup to version-controlled infrastructure, \textbf{found and fixed a 14-month silent data-pipeline outage}, ran incident response, blocked an SMS-verification flood attack, and scaled the backend horizontally.}
+\resumeItem{Led a cloud security and reliability overhaul: moved the AWS setup to version-controlled infrastructure, ran incident response, blocked an SMS-verification flood attack, and scaled the backend horizontally.}
 \resumeItem{\textbf{Drove product-market fit} through direct client engagement, iterating on features and closing enterprise accounts.}
 \resumeTech{Kotlin, Spring Boot, PostgreSQL, Redis, TypeScript, React, React Native, Next.js, AWS (ECS, RDS, Lambda, S3, CloudFront, CloudFormation, Textract), OpenAI, n8n}
 \resumeItemListEnd
 
 \resumeSubheading
   {Senior Backend Engineer (Part-Time)}{Oct 2021 -- Mar 2026}
-  {Cynopsis Solutions --- RegTech (AML/KYC)}{Singapore (Remote)}
+  {\textbf{Cynopsis Solutions} (RegTech)}{Singapore (Remote)}
 \resumeItemListStart
 \resumeItem{Scaled AML/KYC transaction-processing infrastructure to \textbf{1M+ daily transactions}, improving throughput by \textbf{300\%} through architecture optimization.}
 \resumeItem{Designed and implemented \textbf{20+ configurable compliance rules} covering transaction velocity, structuring detection, cross-border flows, and watchlist screening.}
@@ -231,7 +241,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Cloud Native Engineer}{Oct 2020 -- Feb 2021}
-  {DHL Freight Enterprise}{Cairo, Egypt}
+  {\textbf{DHL\hspace{0.12em} Freight Enterprise}}{Cairo, Egypt}
 \resumeItemListStart
 \resumeItem{Led the migration of monolithic applications to a \textbf{serverless architecture}, improving scalability and cutting operational costs by \textbf{35\%}.}
 \resumeItem{Rebuilt a legacy PHP/Laravel codebase as \textbf{Azure Functions} with Entity Framework, reducing latency by \textbf{40\%} without breaking existing integrations.}
@@ -242,7 +252,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Software Engineer}{Aug 2018 -- Apr 2020}
-  {Robo-Tech}{Alexandria, Egypt}
+  {\textbf{Robo-Tech}}{Alexandria, Egypt}
 \resumeItemListStart
 \resumeItem{Built the communication system for \textbf{remotely operated vehicles (ROVs)}, reducing packet loss to below \textbf{0.01\%}.}
 \resumeItem{Designed and launched \textbf{2 ROV prototypes} that passed testing in varied underwater conditions and won client approval for mass production.}
@@ -258,12 +268,12 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Java, Kotlin, Python, TypeScript, SQL, C++, Ruby} \\
-     \textbf{Backend}{: Spring Boot, Django, Node.js, Rails, Celery, Testcontainers} \\
-     \textbf{Data}{: PostgreSQL, Redis, MongoDB, TimescaleDB, Snowflake, dbt} \\
-     \textbf{Architecture}{: Microservices, event-driven architecture, Kafka (Nakadi), REST API design, OPA/Rego, multi-tenancy} \\
-     \textbf{Cloud \& Operations}{: AWS, CloudFormation, Azure, Kubernetes, Docker, CI/CD, OpenTelemetry, Grafana} \\
-     \textbf{AI \& Agentic Engineering}{: Claude Code, GitHub Copilot, MCP, LangChain, RAG, vector databases, embeddings} \\
+     \textbf{Languages}{: Java, Kotlin, Python, TypeScript, SQL, C++, Ruby} \\[4pt]
+     \textbf{Backend}{: Spring Boot, Django, Node.js, Rails, Celery, Testcontainers} \\[4pt]
+     \textbf{Data}{: PostgreSQL, Redis, MongoDB, TimescaleDB, Snowflake, dbt} \\[4pt]
+     \textbf{Architecture}{: Microservices, event-driven architecture, Kafka (Nakadi), REST API design, OPA/Rego, multi-tenancy} \\[4pt]
+     \textbf{Cloud \& Operations}{: AWS, CloudFormation, Azure, Kubernetes, Docker, CI/CD, OpenTelemetry, Grafana} \\[4pt]
+     \textbf{AI \& Agentic Engineering}{: Claude Code, GitHub Copilot, MCP, LangChain, RAG, vector databases, embeddings} \\[4pt]
      \textbf{Frontend \& Mobile}{: React, Next.js, React Native, Angular}
     }}
  \end{itemize}
@@ -272,7 +282,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
- \resumeSubheading
+ \resumeEducation
       {Alexandria University, Faculty of Engineering}{Graduated 2020}
       {Bachelor of Science in Computer \& Communication Engineering}{Alexandria, Egypt}
   \resumeSubHeadingListEnd

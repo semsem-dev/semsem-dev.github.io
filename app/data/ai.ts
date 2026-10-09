@@ -10,11 +10,11 @@ export type AiHighlightType = {
 
 export const aiHighlightsData: AiHighlightType[] = [
   {
-    _id: "ai-native-engineer-talk",
+    _id: "ai-speaking",
     kind: "Speaking",
     icon: "microphone",
-    title: "The AI-Native Engineer",
-    context: "Zalando engineering meetup · 2026",
+    title: "Speaker on AI-Native Engineering",
+    context: "Zalando internal engineering events · 2026",
     description:
       "Talk on working with AI agents across the software lifecycle: planning, durable project memory, MCP-connected tools, specialist agents, isolated worktrees, verification, and keeping key decisions with humans.",
     tags: ["Agentic workflows", "MCP", "Verification"],
@@ -23,10 +23,10 @@ export const aiHighlightsData: AiHighlightType[] = [
     _id: "gen-ai-labs-trainer",
     kind: "Teaching",
     icon: "chalkboard",
-    title: "Gen AI Labs Trainer",
+    title: "Agentic AI Labs Trainer",
     context: "Zalando Tech Academy · 2026",
     description:
-      "Selected as a trainer for Zalando's Gen AI Labs, teaching engineers how to build with AI agents and the Model Context Protocol (MCP).",
+      "Selected as a trainer for Zalando's Agentic AI Labs, teaching engineers how to build with AI agents and the Model Context Protocol (MCP).",
     tags: ["AI agents", "MCP", "Enablement"],
   },
   {
@@ -34,19 +34,19 @@ export const aiHighlightsData: AiHighlightType[] = [
     kind: "Teaching",
     icon: "chalkboard",
     title: "Hands-on Agentic Engineering Workshop",
-    context: "Co-designer · ~20 engineers across 3 teams",
+    context: "Workshop designer · ~20 engineers across 3 teams",
     description:
-      "Co-designing a practical workshop covering repository grounding, reusable agent skills, MCP, typed agent outputs, guardrails, and orchestrated multi-agent delivery.",
+      "Designing a practical workshop covering repository grounding, reusable agent skills, MCP, typed agent outputs, guardrails, and orchestrated multi-agent delivery.",
     tags: ["Context engineering", "Agent skills", "Guardrails"],
   },
   {
     _id: "shipping-notice-copilot",
     kind: "Award",
     icon: "trophy",
-    title: "Shipping Notice Co-pilot",
+    title: "Shipping Notice Copilot",
     context: "Best AI Usage · Procure-to-Pay HackWeek 2026",
     description:
-      "Co-built an AI prototype that pre-fills supplier delivery notices from shipment and purchase-order history. The team won the HackWeek award for Best AI Usage.",
+      "Built an AI prototype that pre-fills supplier delivery notices from shipment and purchase-order history. The team won the HackWeek award for Best AI Usage.",
     tags: ["LLMs", "Prototyping", "Supply chain"],
   },
   {

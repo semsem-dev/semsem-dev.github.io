@@ -9,7 +9,7 @@ export const jobsData: JobType[] = [
         url: "https://zalando.com",
         startDate: "2022-09-01",
         endDate: "",
-        description: "Designed and led delivery of a supplier-chargeback platform generating €33M+ a year across 1,200+ suppliers. Co-designed a supplier self-service tool that saved ~3.5 FTEs and cut delivery delays by 1.5 days. Won Best AI Usage at Procure-to-Pay HackWeek 2026; internal speaker and Gen AI Labs trainer.",
+        description: "Designed and led delivery of a supplier-chargeback platform generating €33M+ a year across 1,200+ suppliers. Designed a supplier self-service tool that saved ~3.5 FTEs and cut delivery delays by 1.5 days. Won Best AI Usage at Procure-to-Pay HackWeek 2026; internal speaker and Agentic AI Labs trainer.",
     },
     {
         _id: "noaat",
