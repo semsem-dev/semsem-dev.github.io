@@ -2,7 +2,7 @@
 
 import { visitedCountries } from "@/app/data/travel";
 import { Slide } from "../../animation/Slide";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { BiWorld } from "react-icons/bi";
 import { FaPlane, FaChevronDown, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -18,7 +18,7 @@ const countryRegions: Record<string, string> = {
 };
 
 // Animation variants for staggered children
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -29,7 +29,7 @@ const containerVariants = {
     }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
     hidden: {
         opacity: 0,
         y: 30,
@@ -50,7 +50,7 @@ const cardVariants = {
     }
 };
 
-const statCardVariants = {
+const statCardVariants: Variants = {
     hidden: { opacity: 0, y: 40, scale: 0.8 },
     visible: (i: number) => ({
         opacity: 1,
@@ -65,7 +65,7 @@ const statCardVariants = {
     })
 };
 
-const filterPillVariants = {
+const filterPillVariants: Variants = {
     idle: { scale: 1 },
     hover: {
         scale: 1.08,
@@ -201,7 +201,7 @@ export default function WorldMap() {
                         }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                     >
-                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
+                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-linear-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
                     </motion.div>
                     <motion.div
                         animate={{
@@ -211,7 +211,7 @@ export default function WorldMap() {
                         }}
                         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
                     >
-                        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-br from-pink-500/10 to-orange-500/10 rounded-full blur-3xl" />
+                        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-linear-to-br from-pink-500/10 to-orange-500/10 rounded-full blur-3xl" />
                     </motion.div>
 
                     {/* Stats Cards with animated counters */}
@@ -327,7 +327,7 @@ export default function WorldMap() {
                                 >
                                     <button
                                         onClick={() => scrollGrid('left')}
-                                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm shadow-lg border dark:border-zinc-700 border-zinc-200 sm:hidden"
+                                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-xs shadow-lg border dark:border-zinc-700 border-zinc-200 sm:hidden"
                                     >
                                         <FaChevronLeft className="text-zinc-600 dark:text-zinc-300" />
                                     </button>
@@ -344,7 +344,7 @@ export default function WorldMap() {
                                 >
                                     <button
                                         onClick={() => scrollGrid('right')}
-                                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm shadow-lg border dark:border-zinc-700 border-zinc-200 sm:hidden"
+                                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-xs shadow-lg border dark:border-zinc-700 border-zinc-200 sm:hidden"
                                     >
                                         <FaChevronRight className="text-zinc-600 dark:text-zinc-300" />
                                     </button>
@@ -382,7 +382,7 @@ export default function WorldMap() {
                                                 className="group relative flex flex-col p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 hover:border-blue-400 dark:hover:border-blue-500 transition-colors"
                                             >
                                             <div className="flex items-center gap-2 mb-2">
-                                                <div className="relative w-5 h-3.5 rounded-[2px] overflow-hidden shadow-sm">
+                                                <div className="relative w-5 h-3.5 rounded-[2px] overflow-hidden shadow-xs">
                                                     <Image
                                                         src={`https://flagcdn.com/w40/${country.code}.png`}
                                                         alt={country.name}
@@ -447,7 +447,7 @@ export default function WorldMap() {
                             animate={{ opacity: [0.5, 1, 0.5] }}
                             transition={{ duration: 2, repeat: Infinity }}
                         >
-                            <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium px-3 py-1 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm">
+                            <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium px-3 py-1 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-xs">
                             Scroll to explore
                             </span>
                         </motion.span>
@@ -459,7 +459,7 @@ export default function WorldMap() {
                                 ease: "easeInOut"
                             }}
                         >
-                            <div className="p-2 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                            <div className="p-2 rounded-full bg-linear-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-xs border border-zinc-200/50 dark:border-zinc-700/50">
                             <motion.div
                                 animate={{
                                     opacity: [0.5, 1, 0.5],

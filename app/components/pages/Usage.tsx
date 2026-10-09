@@ -53,9 +53,9 @@ export default function Usage() {
                       boxShadow: "0 4px 20px -4px rgba(59, 130, 246, 0.3)"
                     }}
                   >
-                    <span className="group relative px-4 py-2 bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/50 rounded-xl text-sm text-zinc-700 dark:text-zinc-300 cursor-default transition-all duration-300 hover:border-blue-500/50 hover:dark:border-blue-500/50 overflow-hidden inline-block">
+                    <span className="group relative px-4 py-2 bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/50 rounded-xl text-sm text-zinc-700 dark:text-zinc-300 cursor-default transition-all duration-300 hover:border-blue-500/50 dark:hover:border-blue-500/50 overflow-hidden inline-block">
                     {/* Gradient overlay on hover */}
-                    <span className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="absolute inset-0 bg-linear-to-r from-blue-500/0 via-blue-500/5 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <span className="relative z-10 font-medium">{item}</span>
                     </span>
                   </motion.span>

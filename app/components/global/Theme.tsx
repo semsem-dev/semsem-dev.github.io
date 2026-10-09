@@ -1,19 +1,18 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import SunIcon from "../../assets/icons/SunIcon";
 import MoonIcon from "../../assets/icons/MoonIcon";
+import { useHasMounted } from "../../utils/use-has-mounted";
 
 export default function Theme() {
   const { systemTheme, theme, setTheme } = useTheme();
-  const [hasMounted, setHasMounted] = useState(false);
+  const hasMounted = useHasMounted();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   function toggleTheme() {
     return currentTheme === "light" ? setTheme("dark") : setTheme("light");
   }
-  useEffect(() => setHasMounted(true), []);
 
   if (!hasMounted)
     return (
