@@ -10,24 +10,20 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{textcomp}
-\usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
+\usepackage{color}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
 \usepackage[english]{babel}
-\usepackage{eurosym}
-\usepackage{tabularx}
 \usepackage{fontawesome5}
-\usepackage{multicol}
 \usepackage{needspace}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
+\usepackage{graphicx}
+\usepackage{accsupp}
 \input{glyphtounicode}
+% Map decorative FontAwesome glyphs to spaces so text extraction never yields junk characters
+\pdfglyphtounicode{phone}{0020}\pdfglyphtounicode{envelope}{0020}
+\pdfglyphtounicode{linkedin}{0020}\pdfglyphtounicode{github}{0020}
 
 \hypersetup{
   pdftitle={Hassan Elseoudy - Senior Software Engineer - Resume},
@@ -35,17 +31,22 @@
   pdfkeywords={Senior Software Engineer, Backend, Java, Kotlin, Spring Boot, Distributed Systems, Event-Driven Architecture, AI Engineering}
 }
 
+\pagestyle{empty} % no headers or footers
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+% Accent color for the name, section titles, and icons
+\definecolor{accent}{rgb}{0.12,0.23,0.37}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
+% Decorative icon that PDF text extraction (and ATS parsers) skip
+\DeclareRobustCommand{\icon}[1]{\BeginAccSupp{ActualText={}}#1\EndAccSupp{}}
+
+% Company logo shown before the company name in a heading
+\graphicspath{{images/resume/}}
+\newcommand{\logo}[1]{\icon{\raisebox{-0.17em}{\includegraphics[height=0.95em]{#1}}}\hspace{0.3em}}
+
+% Margins: 0.55in on the sides
+\addtolength{\oddsidemargin}{-0.45in}
+\addtolength{\evensidemargin}{-0.45in}
+\addtolength{\textwidth}{0.9in}
 \addtolength{\topmargin}{-.7in}
 \addtolength{\textheight}{1.4in}
 
@@ -58,8 +59,8 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-4pt}\raggedright\large\bfseries\color{accent}
+}{}{0em}{}[\color{accent}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -67,54 +68,21 @@
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+  \item{\small #1\par}\vspace{-2pt}
 }
 
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
-}
-
-% One-line job heading: "Role @ Company" on the left, "Location -- Dates" on the right
-% Args: {role}{dates}{company}{location}
+% One-line heading: "Role [logo] Organization" on the left, "Location | Dates" on the right
+% Args: {role}{dates}{organization}{location}
 \newcommand{\resumeSubheading}[4]{
   \needspace{6\baselineskip}\vspace{3pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1 @} #3 & \small #4 --- #2 \\
+      \textbf{#1} #3 & {\small #4 $|$ #2} \\
     \end{tabular*}\vspace{-7pt}
 }
-
-% Two-line heading kept for Education
-\newcommand{\resumeEducation}[4]{
-  \needspace{4\baselineskip}\vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textbf{\small #2} \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 % Technology line shown at the end of a role
 \newcommand{\resumeTech}[1]{
-  \item[]\hspace{-0.16in}\small{\textit{Tech:} #1 \vspace{-2pt}}
+  \item[]\hspace{-0.16in}{\small\textit{Tech:} #1\par}\vspace{-2pt}
 }
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -132,18 +100,18 @@
 
 %----------HEADING----------
 \begin{center}
-    {\Huge \scshape Hassan Elseoudy} \\ \vspace{1pt}
+    {\Huge \scshape \color{accent} Hassan Elseoudy} \\ \vspace{1pt}
     Senior Software Engineer $|$ Berlin, Germany \\ \vspace{1pt}
-    \small \raisebox{-0.1\height}\faPhone\ +49 176 84883675 ~ \href{mailto:hassan.elseoudy@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{hassan.elseoudy@gmail.com}} ~
-    \href{https://www.linkedin.com/in/semsem-dev}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/semsem-dev}}  ~
-    \href{https://github.com/semsem-dev}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/semsem-dev}}
+    \small \icon{\raisebox{-0.1\height}{\faPhone}}\ +49 176 84883675 ~ \href{mailto:hassan.elseoudy@gmail.com}{\icon{\raisebox{-0.2\height}{\faEnvelope}}\  \underline{hassan.elseoudy@gmail.com}} ~
+    \href{https://www.linkedin.com/in/semsem-dev}{\icon{\raisebox{-0.2\height}{\faLinkedin}}\ \underline{linkedin.com/in/semsem-dev}}  ~
+    \href{https://github.com/semsem-dev}{\icon{\raisebox{-0.2\height}{\faGithub}}\ \underline{github.com/semsem-dev}}
 \end{center}
 
 
 %-----------SUMMARY-----------
 \section{Summary}
-\small{
-Senior software engineer with 8+ years designing distributed backend systems in Java, Kotlin, and Python. At Zalando, designs and leads cross-team platforms for supplier finance and logistics, and drives platform modernization and AI-assisted engineering. Internal speaker, Agentic AI Labs trainer, and startup founder.
+{\small
+Senior software engineer with 8+ years designing distributed backend systems in Java, Kotlin, and Python. At Zalando, designs and leads cross-team platforms for supplier finance and logistics, and drives platform modernization and AI-assisted engineering. Internal speaker, Agentic AI Labs trainer, and startup founder.\par
 }
 \vspace{-4pt}
 
@@ -154,11 +122,11 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Senior Software Engineer}{Sep 2022 -- Present}
-  {\textbf{Zalando} (Procure-to-Pay Engineering)}{Berlin, Germany}
+  {\logo{zalando}\textbf{Zalando}}{Berlin, Germany}
 \resumeItemListStart
 \resumeItem{\textbf{Designed the architecture and led delivery} of a \textbf{supplier-chargeback platform} that automatically bills suppliers for contract violations; its reusable design scaled to \textbf{seven chargeback types} generating \textbf{\texteuro{}33M+ a year} (\texteuro{}67M+ since 2025) across \textbf{1,200+ suppliers} and saved \textasciitilde{}\textbf{1.5 FTEs} of manual work.}
-\resumeItem{Authored the technical designs for a \textbf{supplier self-service tool} spanning \textbf{six services} and for clarification workflows covering \textasciitilde{}\textbf{500 suppliers}; the self-service launch saved or avoided \textasciitilde{}\textbf{3.5 FTEs} and cut delivery delays by \textbf{1.5 days}.}
-\resumeItem{Developed and operated the delivery-notice system suppliers use to announce shipments (\textbf{1.5M+ notices}, \textbf{250M+ row} database, \textbf{99.99\% availability}) and its \textbf{transport-planning} integration for scheduling and warehouse capacity.}
+\resumeItem{Authored the technical designs for a \textbf{supplier self-service tool} spanning \textbf{six services} and for clarification workflows covering \textasciitilde{}\textbf{500 suppliers}; the launch saved or avoided \textasciitilde{}\textbf{3.5 FTEs} and cut delivery delays by \textbf{1.5 days}.}
+\resumeItem{Developed and operated the system suppliers use to announce deliveries (\textbf{1.5M+ notices}, \textbf{250M+ row} database, \textbf{99.99\% availability}) and its \textbf{transport-planning} integration for scheduling and warehouse capacity.}
 \resumeItem{Automated \textbf{customs import filings} and built the tariff and duty-rate services used to price imported goods.}
 \resumeItem{Delivered core parts of the \textbf{About You integration}: made purchasing rules configurable instead of hard-coded, and built the system for internal sales and stock-ownership transfers between the two companies.}
 \resumeItem{Migrated services to \textbf{Spring~Boot~3} and \textbf{12 services to Spring~Boot~4}; extended \textbf{shared messaging libraries used by other teams} with tracing and event deduplication.}
@@ -170,7 +138,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Java Engineer}{Oct 2021 -- May 2022}
-  {\textbf{DHL\hspace{0.12em} Freight Enterprise}}{Sofia, Bulgaria}
+  {\logo{dhl}\textbf{DHL\hspace{0.12em} Freight Enterprise}}{Sofia, Bulgaria}
 \resumeItemListStart
 \resumeItem{Developed features for DHL Freight's \textbf{Transport Management System (TMS)}, which runs customers' end-to-end transport operations across DHL's regional and national network.}
 \resumeItem{\textbf{Automated logistics workflows}, reducing manual data entry and human error in shipment scheduling.}
@@ -180,7 +148,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Software Engineer}{Jan 2021 -- Jun 2022}
-  {\textbf{Rubikal}}{Alexandria, Egypt}
+  {\logo{rubikal}\textbf{Rubikal}}{Alexandria, Egypt}
 \resumeItemListStart
 \resumeItem{\textbf{Redesigned the data pipeline}, cutting average ETL time by \textbf{45\%} and enabling real-time analytics.}
 \resumeItem{Analyzed education data covering \textbf{millions of students} and delivered actionable insights to clients.}
@@ -192,7 +160,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Software Engineer}{Apr 2020 -- Dec 2020}
-  {\textbf{Sia}}{Cairo, Egypt}
+  {\logo{sia}\textbf{Sia}}{Cairo, Egypt}
 \resumeItemListStart
 \resumeItem{Built \textbf{7+ microservices} (gamification, notifications, educational content) for a 10-person ed-tech startup.}
 \resumeItem{Created an \textbf{end-to-end CI/CD pipeline} that cut deployment time by \textbf{60\%}, enabling much faster feature releases.}
@@ -204,44 +172,41 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 
 %-----------FOUNDER & PART-TIME-----------
-\section{Founder, Freelance \& Part-Time}
+\clearpage
+\section{Founder \& Part-Time Roles}
 \resumeSubHeadingListStart
 
 \resumeSubheading
   {Founder \& CEO}{Jan 2024 -- Jan 2026}
-  {\textbf{Noaat} (Restaurant \& retail tech startup)}{Alexandria, Egypt}
+  {\logo{noaat}\textbf{Noaat} (Restaurant \& retail tech startup)}{Alexandria, Egypt}
 \resumeItemListStart
-\resumeItem{\textbf{Founded and scaled a B2B SaaS platform from 0$\rightarrow$1}, serving \textbf{50+ restaurant clients} at \textbf{99.9\% uptime}, and evolved it from a customer feedback and loyalty app into a cashback marketplace and a point-of-sale (POS) system.}
-\resumeItem{\textbf{Built and led a cross-functional team of 8 engineers} (frontend, mobile, backend, QA) plus data and design; set the technical roadmap, agile delivery (\textbf{40 two-week sprints}), code-review standards, and on-call playbooks, and was the main code reviewer (\textbf{330+ reviews}).}
-\resumeItem{\textbf{Architected the full technology stack}: Kotlin/Spring Boot backend (\textbf{\textasciitilde{}240 API endpoints}), React Native mobile app, Next.js website, and QR table ordering on AWS (ECS, Lambda, RDS, S3, CloudFormation).}
-\resumeItem{Designed a \textbf{multi-tenant architecture} supporting \textbf{50+ branches} with role-based access control, staff permissions, and centralized client management.}
+\resumeItem{\textbf{Founded and scaled a B2B SaaS platform from 0$\rightarrow$1}, serving \textbf{50+ restaurant clients} at \textbf{99.9\% uptime}, and evolved it from a \textbf{customer feedback platform} (surveys with response analytics) and loyalty app into a cashback marketplace and a point-of-sale (POS) system.}
+\resumeItem{\textbf{Built and led a cross-functional team of 8 engineers} (frontend, mobile, backend, QA) plus data and design; set the technical roadmap, ran \textbf{40 two-week sprints}, defined code-review standards and on-call playbooks, and was the main reviewer (\textbf{330+ reviews}).}
+\resumeItem{\textbf{Architected the full technology stack}: a \textbf{multi-tenant} Kotlin/Spring Boot backend (\textbf{\textasciitilde{}240 API endpoints}) supporting \textbf{50+ branches} with role-based access control, staff permissions, and centralized client management; a React Native app, a Next.js website, and QR table ordering on AWS.}
 \resumeItem{Built an \textbf{enterprise point-of-sale system} with real-time order management, kitchen display integration, and thermal printing through a custom Android printer bridge; personally built the POS web app (40 releases).}
 \resumeItem{Implemented a \textbf{coupon and cashback loyalty system} with receipt-based claims and automatic receipt verification (AWS Textract, OpenAI), driving a \textbf{30\% increase} in repeat customer visits.}
-\resumeItem{Built a \textbf{customer feedback platform} with survey creation and response analytics for data-driven improvements.}
 \resumeItem{Built an \textbf{Arabic AI sales and support chatbot} on Facebook Messenger (n8n, GPT-4o-mini, Pinecone) that answers customers, opens Jira tickets for issues, and routes sales leads to the CRM and Slack.}
 \resumeItem{Led a cloud security and reliability overhaul: moved the AWS setup to version-controlled infrastructure, ran incident response, blocked an SMS-verification flood attack, and scaled the backend horizontally.}
 \resumeItem{\textbf{Drove product-market fit} through direct client engagement, iterating on features and closing enterprise accounts.}
-\resumeTech{Kotlin, Spring Boot, PostgreSQL, Redis, TypeScript, React, React Native, Next.js, AWS (ECS, RDS, Lambda, S3, CloudFront, CloudFormation, Textract), OpenAI, n8n}
+\resumeTech{Kotlin, Spring Boot, PostgreSQL, Redis, TypeScript, React, React Native, Next.js, AWS (ECS, RDS, Lambda, S3, CloudFormation, Textract), OpenAI, n8n}
 \resumeItemListEnd
 
 \resumeSubheading
-  {Senior Backend Engineer (Part-Time)}{Oct 2021 -- Mar 2026}
-  {\textbf{Cynopsis Solutions} (RegTech)}{Singapore (Remote)}
+  {Senior Backend Engineer}{Oct 2021 -- Mar 2026}
+  {\logo{cynopsis}\textbf{Cynopsis Solutions}}{Singapore}
 \resumeItemListStart
-\resumeItem{Scaled AML/KYC transaction-processing infrastructure to \textbf{1M+ daily transactions}, improving throughput by \textbf{300\%} through architecture optimization.}
+\resumeItem{Scaled AML/KYC transaction processing to \textbf{1M+ daily transactions}, improving throughput by \textbf{300\%}.}
 \resumeItem{Designed and implemented \textbf{20+ configurable compliance rules} covering transaction velocity, structuring detection, cross-border flows, and watchlist screening.}
 \resumeItem{Led the AI integration strategy, building a \textbf{RAG-powered compliance assistant} that cut analyst investigation time by \textbf{60\%} and enabled natural-language regulatory queries.}
-\resumeItem{Directed \textbf{platform modernization}: multi-tenant architecture, CRM integration for user provisioning, and audit-ready permission frameworks.}
+\resumeItem{Directed \textbf{platform modernization}: multi-tenant architecture, CRM-based user provisioning, audit-ready permissions, and Arabic right-to-left support enabling expansion into \textbf{Middle East markets}.}
 \resumeItem{Designed a \textbf{case-workflow engine} with configurable status transitions, escalation paths, and ageing calculations for \textbf{regulatory SLA compliance}.}
-\resumeItem{Led \textbf{internationalization} with Arabic right-to-left support, enabling expansion into \textbf{Middle East markets}.}
-\resumeItem{Built an \textbf{executive Metabase dashboard} with real-time analytics on pending-case distribution, risk bucketing, and analyst performance.}
-\resumeItem{Authored \textbf{API documentation and technical design documents}, speeding up onboarding and third-party integrations.}
+\resumeItem{Built an \textbf{executive Metabase dashboard} (case distribution, risk bucketing, analyst performance) and authored \textbf{API and technical design documents} that sped up onboarding and integrations.}
 \resumeTech{Python, Django, LangChain, Celery, TimescaleDB, PostgreSQL, vector databases, Metabase}
 \resumeItemListEnd
 
 \resumeSubheading
   {Cloud Native Engineer}{Oct 2020 -- Feb 2021}
-  {\textbf{DHL\hspace{0.12em} Freight Enterprise}}{Cairo, Egypt}
+  {\logo{cassbana}\textbf{Cassbana}}{Cairo, Egypt}
 \resumeItemListStart
 \resumeItem{Led the migration of monolithic applications to a \textbf{serverless architecture}, improving scalability and cutting operational costs by \textbf{35\%}.}
 \resumeItem{Rebuilt a legacy PHP/Laravel codebase as \textbf{Azure Functions} with Entity Framework, reducing latency by \textbf{40\%} without breaking existing integrations.}
@@ -252,7 +217,7 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 
 \resumeSubheading
   {Software Engineer}{Aug 2018 -- Apr 2020}
-  {\textbf{Robo-Tech}}{Alexandria, Egypt}
+  {\logo{robotech}\textbf{Robo-Tech}}{Alexandria, Egypt}
 \resumeItemListStart
 \resumeItem{Built the communication system for \textbf{remotely operated vehicles (ROVs)}, reducing packet loss to below \textbf{0.01\%}.}
 \resumeItem{Designed and launched \textbf{2 ROV prototypes} that passed testing in varied underwater conditions and won client approval for mass production.}
@@ -267,14 +232,14 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 %-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
+    {\small\item{
      \textbf{Languages}{: Java, Kotlin, Python, TypeScript, SQL, C++, Ruby} \\[4pt]
      \textbf{Backend}{: Spring Boot, Django, Node.js, Rails, Celery, Testcontainers} \\[4pt]
      \textbf{Data}{: PostgreSQL, Redis, MongoDB, TimescaleDB, Snowflake, dbt} \\[4pt]
      \textbf{Architecture}{: Microservices, event-driven architecture, Kafka (Nakadi), REST API design, OPA/Rego, multi-tenancy} \\[4pt]
      \textbf{Cloud \& Operations}{: AWS, CloudFormation, Azure, Kubernetes, Docker, CI/CD, OpenTelemetry, Grafana} \\[4pt]
      \textbf{AI \& Agentic Engineering}{: Claude Code, GitHub Copilot, MCP, LangChain, RAG, vector databases, embeddings} \\[4pt]
-     \textbf{Frontend \& Mobile}{: React, Next.js, React Native, Angular}
+     \textbf{Frontend \& Mobile}{: React, Next.js, React Native, Angular}\par
     }}
  \end{itemize}
 
@@ -282,9 +247,9 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
- \resumeEducation
-      {Alexandria University, Faculty of Engineering}{Graduated 2020}
-      {Bachelor of Science in Computer \& Communication Engineering}{Alexandria, Egypt}
+    \resumeSubheading
+      {B.Sc. Computer \& Communication Engineering,}{2020}
+      {\textbf{Alexandria University}}{Alexandria, Egypt}
   \resumeSubHeadingListEnd
 
 \end{document}
