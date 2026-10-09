@@ -20,10 +20,12 @@
 \usepackage{needspace}
 \usepackage{graphicx}
 \usepackage{accsupp}
+\usepackage{lastpage}
 \input{glyphtounicode}
 % Map decorative FontAwesome glyphs to spaces so text extraction never yields junk characters
 \pdfglyphtounicode{phone}{0020}\pdfglyphtounicode{envelope}{0020}
 \pdfglyphtounicode{linkedin}{0020}\pdfglyphtounicode{github}{0020}
+\pdfglyphtounicode{external-link-alt}{0020}
 
 \hypersetup{
   pdftitle={Hassan Elseoudy - Senior Software Engineer - Resume},
@@ -31,10 +33,18 @@
   pdfkeywords={Senior Software Engineer, Backend, Java, Kotlin, Spring Boot, Distributed Systems, Event-Driven Architecture, AI Engineering}
 }
 
-\pagestyle{empty} % no headers or footers
+% Footer: page number as "1/3"
+\makeatletter
+\def\ps@resume{%
+  \let\@oddhead\@empty\let\@evenhead\@empty
+  \def\@oddfoot{\hfil{\scriptsize\color{gray}\thepage/\pageref*{LastPage}}\hfil}%
+  \let\@evenfoot\@oddfoot}
+\makeatother
+\pagestyle{resume}
 
-% Accent color for the name, section titles, and icons
-\definecolor{accent}{rgb}{0.12,0.23,0.37}
+% Accent color for the name and section titles (black; change here to restyle)
+\definecolor{accent}{rgb}{0,0,0}
+\definecolor{gray}{rgb}{0.45,0.45,0.45}
 
 % Decorative icon that PDF text extraction (and ATS parsers) skip
 \DeclareRobustCommand{\icon}[1]{\BeginAccSupp{ActualText={}}#1\EndAccSupp{}}
@@ -42,6 +52,12 @@
 % Company logo shown before the company name in a heading
 \graphicspath{{images/resume/}}
 \newcommand{\logo}[1]{\icon{\raisebox{-0.17em}{\includegraphics[height=0.95em]{#1}}}\hspace{0.3em}}
+
+% Tiny grey "opens externally" arrow shown after linked company names
+\newcommand{\extlink}{\hspace{0.25em}\icon{\raisebox{0.35em}{\color{gray}\fontsize{5pt}{5pt}\selectfont\faIcon{external-link-alt}}}}
+
+% Small country flag between the location and the dates (replaces the "|" separator)
+\newcommand{\flag}[1]{\hspace{0.4em}\icon{\raisebox{-0.02em}{\includegraphics[height=0.66em]{flag-#1}}}\hspace{0.4em}}
 
 % Margins: 0.55in on the sides
 \addtolength{\oddsidemargin}{-0.45in}
@@ -71,12 +87,12 @@
   \item{\small #1\par}\vspace{-2pt}
 }
 
-% One-line heading: "Role [logo] Organization" on the left, "Location | Dates" on the right
+% One-line heading: "Role [logo] Organization" on the left, "Location [flag] Dates" on the right
 % Args: {role}{dates}{organization}{location}
 \newcommand{\resumeSubheading}[4]{
   \needspace{6\baselineskip}\vspace{3pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} #3 & {\small #4 $|$ #2} \\
+      \textbf{#1} #3 & {\small #4#2} \\
     \end{tabular*}\vspace{-7pt}
 }
 
@@ -121,8 +137,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeSubHeadingListStart
 
 \resumeSubheading
-  {Senior Software Engineer}{Sep 2022 -- Present}
-  {\logo{zalando}\textbf{Zalando}}{Berlin, Germany}
+  {Senior Software Engineer}{09/2022 -- Present}
+  {\logo{zalando}\href{https://zalando.com}{\textbf{Zalando}\extlink}}{Berlin, Germany\flag{de}}
 \resumeItemListStart
 \resumeItem{\textbf{Designed the architecture and led delivery} of a \textbf{supplier-chargeback platform} that automatically bills suppliers for contract violations; its reusable design scaled to \textbf{seven chargeback types} generating \textbf{\texteuro{}33M+ a year} (\texteuro{}67M+ since 2025) across \textbf{1,200+ suppliers} and saved \textasciitilde{}\textbf{1.5 FTEs} of manual work.}
 \resumeItem{Authored the technical designs for a \textbf{supplier self-service tool} spanning \textbf{six services} and for clarification workflows covering \textasciitilde{}\textbf{500 suppliers}; the launch saved or avoided \textasciitilde{}\textbf{3.5 FTEs} and cut delivery delays by \textbf{1.5 days}.}
@@ -137,8 +153,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeItemListEnd
 
 \resumeSubheading
-  {Java Engineer}{Oct 2021 -- May 2022}
-  {\logo{dhl}\textbf{DHL\hspace{0.12em} Freight Enterprise}}{Sofia, Bulgaria}
+  {Java Engineer}{10/2021 -- 05/2022}
+  {\logo{dhl}\href{https://dhl.com}{\textbf{DHL\hspace{0.12em} Freight Enterprise}\extlink}}{Sofia, Bulgaria\flag{bg}}
 \resumeItemListStart
 \resumeItem{Developed features for DHL Freight's \textbf{Transport Management System (TMS)}, which runs customers' end-to-end transport operations across DHL's regional and national network.}
 \resumeItem{\textbf{Automated logistics workflows}, reducing manual data entry and human error in shipment scheduling.}
@@ -147,8 +163,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeItemListEnd
 
 \resumeSubheading
-  {Software Engineer}{Jan 2021 -- Jun 2022}
-  {\logo{rubikal}\textbf{Rubikal}}{Alexandria, Egypt}
+  {Software Engineer}{01/2021 -- 06/2022}
+  {\logo{rubikal}\href{https://rubikal.com}{\textbf{Rubikal}\extlink}}{Alexandria, Egypt\flag{eg}}
 \resumeItemListStart
 \resumeItem{\textbf{Redesigned the data pipeline}, cutting average ETL time by \textbf{45\%} and enabling real-time analytics.}
 \resumeItem{Analyzed education data covering \textbf{millions of students} and delivered actionable insights to clients.}
@@ -159,8 +175,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeItemListEnd
 
 \resumeSubheading
-  {Software Engineer}{Apr 2020 -- Dec 2020}
-  {\logo{sia}\textbf{Sia}}{Cairo, Egypt}
+  {Software Engineer}{04/2020 -- 12/2020}
+  {\logo{sia}\href{https://www.facebook.com/sia.world.edu/}{\textbf{Sia}\extlink}}{Cairo, Egypt\flag{eg}}
 \resumeItemListStart
 \resumeItem{Built \textbf{7+ microservices} (gamification, notifications, educational content) for a 10-person ed-tech startup.}
 \resumeItem{Created an \textbf{end-to-end CI/CD pipeline} that cut deployment time by \textbf{60\%}, enabling much faster feature releases.}
@@ -177,8 +193,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeSubHeadingListStart
 
 \resumeSubheading
-  {Founder \& CEO}{Jan 2024 -- Jan 2026}
-  {\logo{noaat}\textbf{Noaat} (Restaurant \& retail tech startup)}{Alexandria, Egypt}
+  {Founder \& CEO}{01/2024 -- 01/2026}
+  {\logo{noaat}\href{https://noaat.com}{\textbf{Noaat}\extlink} (Restaurant \& retail tech startup)}{Alexandria, Egypt\flag{eg}}
 \resumeItemListStart
 \resumeItem{\textbf{Founded and scaled a B2B SaaS platform from 0$\rightarrow$1}, serving \textbf{50+ restaurant clients} at \textbf{99.9\% uptime}, and evolved it from a \textbf{customer feedback platform} (surveys with response analytics) and loyalty app into a cashback marketplace and a point-of-sale (POS) system.}
 \resumeItem{\textbf{Built and led a cross-functional team of 8 engineers} (frontend, mobile, backend, QA) plus data and design; set the technical roadmap, ran \textbf{40 two-week sprints}, defined code-review standards and on-call playbooks, and was the main reviewer (\textbf{330+ reviews}).}
@@ -192,8 +208,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeItemListEnd
 
 \resumeSubheading
-  {Senior Backend Engineer}{Oct 2021 -- Mar 2026}
-  {\logo{cynopsis}\textbf{Cynopsis Solutions}}{Singapore}
+  {Senior Backend Engineer}{10/2021 -- 03/2026}
+  {\logo{cynopsis}\href{https://cynopsis.co}{\textbf{Cynopsis Solutions}\extlink}}{Singapore\flag{sg}}
 \resumeItemListStart
 \resumeItem{Scaled AML/KYC transaction processing to \textbf{1M+ daily transactions}, improving throughput by \textbf{300\%}.}
 \resumeItem{Designed and implemented \textbf{20+ configurable compliance rules} covering transaction velocity, structuring detection, cross-border flows, and watchlist screening.}
@@ -205,8 +221,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeItemListEnd
 
 \resumeSubheading
-  {Cloud Native Engineer}{Oct 2020 -- Feb 2021}
-  {\logo{cassbana}\textbf{Cassbana}}{Cairo, Egypt}
+  {Cloud Native Engineer}{10/2020 -- 02/2021}
+  {\logo{cassbana}\href{https://cassbana.com}{\textbf{Cassbana}\extlink}}{Cairo, Egypt\flag{eg}}
 \resumeItemListStart
 \resumeItem{Led the migration of monolithic applications to a \textbf{serverless architecture}, improving scalability and cutting operational costs by \textbf{35\%}.}
 \resumeItem{Rebuilt a legacy PHP/Laravel codebase as \textbf{Azure Functions} with Entity Framework, reducing latency by \textbf{40\%} without breaking existing integrations.}
@@ -216,8 +232,8 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \resumeItemListEnd
 
 \resumeSubheading
-  {Software Engineer}{Aug 2018 -- Apr 2020}
-  {\logo{robotech}\textbf{Robo-Tech}}{Alexandria, Egypt}
+  {Software Engineer}{08/2018 -- 04/2020}
+  {\logo{robotech}\href{https://www.facebook.com/robotech.team/}{\textbf{Robo-Tech}\extlink}}{Alexandria, Egypt\flag{eg}}
 \resumeItemListStart
 \resumeItem{Built the communication system for \textbf{remotely operated vehicles (ROVs)}, reducing packet loss to below \textbf{0.01\%}.}
 \resumeItem{Designed and launched \textbf{2 ROV prototypes} that passed testing in varied underwater conditions and won client approval for mass production.}
@@ -233,13 +249,14 @@ Senior software engineer with 8+ years designing distributed backend systems in 
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     {\small\item{
-     \textbf{Languages}{: Java, Kotlin, Python, TypeScript, SQL, C++, Ruby} \\[4pt]
+     \textbf{Programming Languages}{: Java, Kotlin, Python, TypeScript, SQL, C++, Ruby} \\[4pt]
      \textbf{Backend}{: Spring Boot, Django, Node.js, Rails, Celery, Testcontainers} \\[4pt]
      \textbf{Data}{: PostgreSQL, Redis, MongoDB, TimescaleDB, Snowflake, dbt} \\[4pt]
      \textbf{Architecture}{: Microservices, event-driven architecture, Kafka (Nakadi), REST API design, OPA/Rego, multi-tenancy} \\[4pt]
      \textbf{Cloud \& Operations}{: AWS, CloudFormation, Azure, Kubernetes, Docker, CI/CD, OpenTelemetry, Grafana} \\[4pt]
      \textbf{AI \& Agentic Engineering}{: Claude Code, GitHub Copilot, MCP, LangChain, RAG, vector databases, embeddings} \\[4pt]
-     \textbf{Frontend \& Mobile}{: React, Next.js, React Native, Angular}\par
+     \textbf{Frontend \& Mobile}{: React, Next.js, React Native, Angular} \\[4pt]
+     \textbf{Spoken Languages}{: Arabic (native), English (fluent), German (B1), French (A1)}\par
     }}
  \end{itemize}
 
@@ -249,7 +266,20 @@ Senior software engineer with 8+ years designing distributed backend systems in 
   \resumeSubHeadingListStart
     \resumeSubheading
       {B.Sc. Computer \& Communication Engineering,}{2020}
-      {\textbf{Alexandria University}}{Alexandria, Egypt}
+      {\textbf{Alexandria University}}{Alexandria, Egypt\flag{eg}}
   \resumeSubHeadingListEnd
+\vspace{-4pt}
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    {\small\item{
+     Understanding Agentic AI (Digital Workforce Services) \\[4pt]
+     AWS Fundamentals: Building Serverless Applications (Amazon Web Services) \\[4pt]
+     Getting Started with Google Kubernetes Engine (Google Cloud, Coursera) \\[4pt]
+     Neural Networks and Deep Learning (Coursera) \\[4pt]
+     Spring: Ecosystem and Core (LearnQuest)\par
+    }}
+ \end{itemize}
 
 \end{document}
